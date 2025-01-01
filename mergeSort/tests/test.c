@@ -8,6 +8,7 @@ int generalTEST (int *array, int n, int *control) {  /* unit testing baby */
 			return 1;
 		++i;
 	}
+	printf("\ngeneralTEST: done");
 	return 0;
 }
 
@@ -16,7 +17,7 @@ void unitTEST (int *array, int n, int *control) {
 	if (generalTEST(array, n, control) != 0)
 		printf("generalTEST: failed\n");
 	//if 
-	printf("unitTEST is done");
+	printf("\nunitTEST is done");
 }
 
 int main (void) {
