@@ -1,30 +1,31 @@
-# Simple binary search implementation;
+# Simple quickSort implementation in C
 
 ## Build from source
 ### POSIX
+Builds and runs tests and example
 ```
-./build.sh && ./example
+./build.sh test
+./build.sh example 
 ```
 
 ### Windows MSVC
+Builds and runs tests and example
 ```
-
+.\build.bat && .\test 
+.\build.bat && .\example
 ```
-
 
 ## Run binary
 ### POSIX
+Run example
 ```
-./example // run example program
-...
-./test // run tests
+./example
 ```
 
 ### Windows
+Run example
 ```
-.\example.exe // run example program
-...
-.\test // run tests
+.\example.exe
 ```
 
 

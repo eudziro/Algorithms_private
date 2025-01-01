@@ -1,34 +1,31 @@
-# Simple mergeSort implementation;
+# Simple mergeSort implementation in C
 
 ## Build from source
 ### POSIX
+Builds and runs tests and example
 ```
-./build.sh example // runs example
-...
-./build.sh test //runs tests
+./build.sh test
+./build.sh example 
 ```
 
 ### Windows MSVC
+Builds and runs tests and example
 ```
-.\build.bat && .\example // runs example
-...
-.\build.bat && .\test // runs tests
+.\build.bat && .\test 
+.\build.bat && .\example
 ```
-
 
 ## Run binary
 ### POSIX
+Run example
 ```
-./example // run example program
-...
-./test // run tests
+./example
 ```
 
 ### Windows
+Run example
 ```
-.\example.exe // run example program
-...
-.\test.exe // run tests
+.\example.exe
 ```
 
 
