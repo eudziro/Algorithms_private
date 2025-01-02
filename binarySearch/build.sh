@@ -1,8 +1,12 @@
-#!/bin/bash
+#!/bin/bash 
 
 echo "Building from source...";
-if [ $1 == test ] 
-then make test && ./test | echo "Running tests"
-else make example && ./example
-fi
 
+if [[ $@ == test ]] 
+then
+make test && echo -e "Running tests...\n" && ./test  
+elif [[ $@ == example ]] 
+then 
+make example && echo -e "Running examples...\n" && ./example
+else echo "Bad argument, exiting..."
+fi

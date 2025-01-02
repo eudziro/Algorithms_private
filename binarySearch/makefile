@@ -4,7 +4,7 @@ EXAMPLE_DIR=./examples/
 OBJ_DIR=./obj/
 
 
-obj_example: $(EXAMPLE_DIR)exaple.c
+obj_example: $(EXAMPLE_DIR)example.c
 	gcc -c $(EXAMPLE_DIR)example.c -o ./obj/example.o
 	
 
@@ -15,11 +15,11 @@ obj_test: $(TESTS_DIR)test.c
 obj_binSearch: $(SOURCE_DIR)binarySearch.c
 	gcc -c $(SOURCE_DIR)binarySearch.c -o $(OBJ_DIR)binarySearch.o
 
-test: obj_binSearch obj_test
-	gcc $(OBJ_DIR)binarySearch.o $(OBJ_DIR)test.o -o test
+test: obj_binSearch obj_test ../quickSort/obj/quickSort.o
+	gcc $(OBJ_DIR)binarySearch.o $(OBJ_DIR)test.o ../quickSort/obj/quickSort.o -o test
 
-example: obj_binSearch obj_example
-	gcc $(OBJ_DIR)binarySearch.o $(OBJ_DIR)example.o -o example
+example: obj_binSearch obj_example ../quickSort/obj/quickSort.o
+	gcc $(OBJ_DIR)binarySearch.o $(OBJ_DIR)example.o ../quickSort/obj/quickSort.o -o example
 
 clear: 
 	rm $(OBJ_DIR)*.o example test
