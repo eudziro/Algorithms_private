@@ -9,21 +9,16 @@ int n; // Количество элементов
 int cache[MAX_N]; // Кэш для хранения результатов
 int chosen[MAX_N]; // Массив для хранения выбранных элементов
 
-// Рекурсивная функция с кэшированием
 int knapsack(int index) {
     if (index < 0) return 0; // Базовый случай
     if (cache[index] != -1) return cache[index]; // Проверка кэша
 
-    // Не берем текущий элемент
     int notTake = knapsack(index - 1);
 
-    // Берем текущий элемент
     int take = values[index] + knapsack(index - 2);
 
-    // Сохраняем результат в кэше
     cache[index] = (take > notTake) ? take : notTake;
 
-    // Обновляем массив выбранных элементов
     if (take > notTake) {
         chosen[index] = 1; // Текущий элемент выбран
     } else {
@@ -33,7 +28,6 @@ int knapsack(int index) {
     return cache[index];
 }
 
-// Функция для реконструкции выбранных элементов
 void reconstruct(int index) {
     if (index < 0) return;
     if (chosen[index] == 1) {
@@ -50,7 +44,6 @@ int main() {
         values[i] = rand() % 10 + 1; // Случайные стоимости от 1 до 10
     }
 
-    // Инициализация кэша
     for (int i = 0; i < n; i++) {
         cache[i] = -1;
         chosen[i] = 0;
