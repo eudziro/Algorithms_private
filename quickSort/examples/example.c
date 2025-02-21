@@ -7,8 +7,6 @@ int main (void) {
 	int array[] = {6, 3, 9, 8, 1, 2, 4, 7, 5, 10};
 	int n = sizeof array / sizeof array[0];
 	
-	printf("Before: "); print(array, n);
 	quickSort(array, 0, n - 1);
-	printf("After: "); print(array, n);
 	return 0;
 }

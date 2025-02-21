@@ -18,7 +18,7 @@ void unitTEST (int *array, int n, int *control) {
 	if (generalTEST(array, n, control) != 0)
 		printf("generalTEST: failed\n");
 	//if 
-	printf("unitTEST is done");
+	printf("\nunitTEST is done\n");
 }
 
 int main (void) {

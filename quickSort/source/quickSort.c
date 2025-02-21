@@ -1,13 +1,5 @@
-# include <stdio.h>
+# include "quickSort.h"
 
-void print(int *array, int n) {
-	int i = 0;
-	while (i < n) {
-		printf("%d ", array[i]);
-		++i;
-	}
-printf("\n");
-}
 
 void swap(int *a, int *b)
 {
@@ -18,30 +10,30 @@ void swap(int *a, int *b)
 
 int partition(int *array, int low, int high)
 {
-	int pivot = array[high]; // pivot
-	int i = (low - 1);	   // Index of smaller element
-	int j = low;
-	while (j <= high - 1)
+	int *pivot = (array + high);
+	int temp = (low - 1);	   // new low
+	while ( low < high)
 	{	
 		// If current element is smaller than the pivot
-		if (array[j] < pivot)
+		if (array[low] < *pivot)
 		{
-			i++; // increment index of smaller element
-			swap(&array[i], &array[j]);
-		}++j;
+			// increment and swap if current element is less than pivot;
+			temp++; 
+			swap(&array[temp], &array[low]);
+		}++low;
 	}
-	swap(&array[i + 1], &array[high]);
-	return (i + 1);
+	swap(&array[temp + 1], pivot);
+	return (temp + 1);
 }
 
 void quickSort(int *array, int low, int high)
 {
 	if (low < high)
 	{
-		int pi = partition(array, low, high);
+		int pivotPosition = partition(array, low, high);
 
-		quickSort(array, low, pi - 1);
-		quickSort(array, pi + 1, high);
+		quickSort(array, low, pivotPosition - 1);
+		quickSort(array, pivotPosition + 1, high);
 	}
 }
 

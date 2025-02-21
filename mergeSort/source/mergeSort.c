@@ -1,76 +1,65 @@
-# include <stdio.h>
+#include "mergeSort.h"
 
-void print(int *array, int n) {
-	int i = 0;
-	while(i < n) {
-		printf("%d ", *(array + i));
-                ++i;
+void merge (int *array, int low, int mid, int high) 
+{
+	uint16_t iter, jiter, kiter;
+	uint16_t temp1 = mid - low + 1;
+	uint16_t temp2 = high - mid;
+	int L[temp1], R[temp2];
+
+	for (iter = 0; iter < temp1; iter++) 
+	{
+      		L[iter] = array[low + iter];
 	}
-printf("\n");
+	for (jiter = 0; jiter < temp2; jiter++)
+      	{
+      		R[jiter] = array[mid + jiter + 1];
+	}
+
+	iter = 0; 
+	jiter = 0;
+	kiter = low;
+
+	while (iter < temp1 && jiter < temp2)
+	{
+		if (L[iter] <= R[jiter])
+		{
+			array[kiter] = L[iter];
+			++iter;
+		}
+		else
+		{
+			array[kiter] = R[jiter];
+			++jiter;
+		}
+		++kiter;
+	}
+
+	while (iter < temp1) 
+	{
+		array[kiter] = L[iter];
+		++iter;
+		++kiter;
+	}
+	while (jiter < temp2)
+	{
+		array[kiter] = R[jiter];
+		++jiter;
+		++kiter;
+	}
 }
 
-void merge(int *array, int left, int mid, int right)
+void mergeSort (int *array, int low, int high) 
 {
-    int i, j, k;
-    int n1 = mid - left + 1;
-    int n2 = right - mid;
-
-    // Create temp arrays
-    int L[n1], R[n2];
-
-    // Copy data to temp arrays L[] and R[]
-    for (i = 0; i < n1; i++)
-        L[i] = array[left + i];
-    for (j = 0; j < n2; j++)
-        R[j] = array[mid + 1+ j];
-
-     // Merge the temp arrays back into arr[left..right]
-
-     i = 0; // Initial index of first subarray
-     j = 0; // Initial index of second subarray
-     k = left; // Initial index of merged subarray
-
-     while (i < n1 && j < n2)
-     {
-         if (L[i] <= R[j])
-         {
-             array[k] = L[i];
-             i++;
-         }
-         else
-         {
-             array[k] = R[j];
-             j++;
-         }
-         k++;
-     }
-
-     while (i < n1)
-     {
-         array[k] = L[i];
-         i++;
-         k++;
-     }
-
-     while (j < n2)
-     {
-         array[k] = R[j];
-         j++;
-         k++;
-     }
- }
+	if (low < high) 
+	{
+		int mid = low + (high - low) / 2;
+	
+		mergeSort(array, low, mid);
+		mergeSort(array, mid + 1, high);
+	
+		merge(array, low, mid, high);
+	}
+}
 
 
-void mergeSort(int *array, int left, int right)
-{
-    if (left < right)
-    {
-        int mid = (left + right)/2;
-
-        // Sort first and second halves
-        mergeSort(array, left, mid);
-        mergeSort(array, mid + 1, right);
-
-        merge(array, left, mid, right);
-     }
- }

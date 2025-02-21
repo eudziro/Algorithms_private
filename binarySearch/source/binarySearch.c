@@ -1,4 +1,4 @@
-#include <stdio.h>
+# include "binarySearch.h"
 
 int binarySearch(int array[], int high, int target)
 {

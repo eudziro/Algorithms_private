@@ -10,6 +10,8 @@
 extern "C" {
 # endif
 
+#include <stdio.h>
+
 int binarySearch(int*, int , int);
 
 # ifdef __cplusplus

@@ -1,3 +1,4 @@
+
 obj_example: ./examples/example.c
 	gcc -c ./examples/example.c -o ./obj/example.o
 	
@@ -14,6 +15,8 @@ test: obj_qsort obj_test
 
 example: obj_qsort obj_example
 	gcc ./obj/mergeSort.o ./obj/example.o -o example
+
+.PHONY: clear
 
 clear: 
 	rm ./obj/*.o example test

@@ -9,6 +9,9 @@
 extern "C" {
 # endif
 
+#include <stdio.h>
+#include <stdint.h>
+
 void mergeSort(int *array, int low, int high);
 void print(int *array, int n);
 
